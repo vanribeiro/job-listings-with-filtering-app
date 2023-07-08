@@ -9,3 +9,7 @@ I'm using this challenge to practice my React Native and mobile development skil
 - JavaScript
 - React Native
 - Expo
+
+## Helpful Links
+
+- [How to use SVG on React Native](https://pt.stackoverflow.com/questions/479094/problema-ao-adicionar-svg-no-react-native) (PT-BR) - Stackoverflow answer.
