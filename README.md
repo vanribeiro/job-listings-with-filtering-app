@@ -6,7 +6,7 @@ I'm using this challenge to practice my React Native and mobile development skil
 
 ## Build with
 
-- JavaScript
+- TypeScript
 - React Native
 - Expo
 
