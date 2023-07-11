@@ -4,6 +4,7 @@ export default StyleSheet.create({
     container: {
         width: Dimensions.get('screen').width,
         backgroundColor: 'hsl(180, 52%, 96%)',
-        flex: 1
+        flex: 1,
+        marginTop: 24,
     }
 });

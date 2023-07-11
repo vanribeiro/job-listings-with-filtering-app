@@ -39,7 +39,9 @@
         "jsx",
         "json",
         "wasm",
-        "svg"
+        "svg",
+        "png",
+        "jpg"
       ]
     }
   }
