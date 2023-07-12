@@ -6,7 +6,13 @@ import {
 } from "@expo-google-fonts/league-spartan";
 import { Text } from "react-native";
 
-function Words({ children, fontWeight, style }) {
+interface IText {
+    children: string;
+    fontWeight: number;
+    style?: any;
+};
+
+function Words({ children, fontWeight, style }: IText) {
     let [isFontsLoaded] = useFonts({
 		LeagueSpartan_400Regular,
 		LeagueSpartan_500Medium,

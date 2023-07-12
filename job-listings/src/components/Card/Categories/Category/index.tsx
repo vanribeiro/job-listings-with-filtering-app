@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles";
-import Words from "../../Words";
+import Words from "../../../Words";
 import { TouchableOpacity } from "react-native";
 
 function Category({ children }: any) {
