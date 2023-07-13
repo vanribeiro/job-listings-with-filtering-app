@@ -47,6 +47,7 @@ function Card({
 					tools={tools}
 					level={level}
 					role={role}
+					position={position}
 				/>
 			</View>
 		</View>

@@ -1,27 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import styles from './styles';
-import Category from './Category';
+import React, { useEffect, useState } from "react";
+import { FlatList, View } from "react-native";
+import styles from "./styles";
+import Category from "./Category";
+import useCategories from "../../../hooks/useCategories";
 
-function Categories({languages, tools, level, role}) {
-    const [ list, setList ] = useState([]);
-    const allCategories = languages?.concat(tools);
-    allCategories.push(level)
-    allCategories.push(role);
+function Categories({
+	languages,
+	tools,
+	level,
+	role,
+	position,
+}) {
+	const [selectedCategory, setSelectedCategory] = useState<string>('');
+	const { categoryList } = useCategories({ languages, tools, level, role, position });
 
-    useEffect(() => {
-       setList(allCategories); 
-    }, [])
-
-    return (
-        <View style={styles.categories}>
-            {
-                list.map((item, index) => (
-                    <Category key={index}>{item}</Category>  
-                ))
-            }
-        </View>
-    );
+	return (
+		<View>
+			<FlatList
+				style={styles.categories}
+				data={categoryList}
+				refreshing
+				keyExtractor={item => item}
+				renderItem={({item}) => (
+					<Category setSelectedCategory={setSelectedCategory} text={item} />
+				)}
+			/>
+		</View>
+	);
 }
 
 export default Categories;
