@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 
-function useCategories({languages, tools, level, role, position}) {
+function useCategories({languages, tools, level, role}) {
     const [categoryList, setCategoryList] = useState<Array<string>>([]);
 
-    
     useEffect(() => { setCategoryList(allCategories); }, []);
     
 	const allCategories: any = languages?.concat(tools);
 	allCategories.push(level);
 	allCategories.push(role);
 
-    const categoryDictionary = {
+    const categoryDictionary = [{
         role: role,
-        q: allCategories,
+        tools: tools,
+        languages: languages,
         level: level,
-        position: position
-    }
+        allCategories: allCategories
+    }];
     
     return {categoryList, categoryDictionary};
 }

@@ -1,43 +1,33 @@
 import React, { useState, useContext } from "react";
-import { View, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import Words from "../../Words";
-import closeIcon from "../../../../assets/images/icon-remove.png";
+import { JobsContext } from "../../../contexts/jobs";
+import FilterItem from "./FilterItem";
 
 function Filter() {
+	const { filteredJobs, setFilteredJobs } = useContext(JobsContext);
 
-	const [categories, setCategories] = useState([]);
-	const removeThisCategory = (category: string) => {
-		const copiedCategoriesList: Array<string> = [...categories];
-		const updatedCategories = copiedCategoriesList.filter(item => item !== category);
-		setCategories(updatedCategories);
-	}
-	
-	const clearFilter = () => { setCategories([]); }
+	console.log(filteredJobs);
+
+	const clearFilter = () => {
+		setFilteredJobs([]);
+	};
 
 	return (
 		<>
-			{ categories.length > 0 &&
+			{filteredJobs.length > 0 && (
 				<View style={styles.container}>
 					<View style={styles.filters}>
-						{categories.map((category, indexKey) => (
-							<View key={indexKey} style={styles.filterItem}>
-								<Words fontWeight={400} style={styles.word}>
-									{category}
-								</Words>
-								<TouchableOpacity
-									style={styles.closeButton}
-									onPress={() => removeThisCategory(category)}>
-									<Image source={closeIcon} />
-								</TouchableOpacity>
-							</View>
+						{filteredJobs.map((item, index) => (
+							<FilterItem word={item} key={index} />
 						))}
 					</View>
 					<TouchableOpacity onPress={() => clearFilter()}>
 						<Words fontWeight={400}>Clear</Words>
 					</TouchableOpacity>
 				</View>
-			}
+			)}
 		</>
 	);
 }

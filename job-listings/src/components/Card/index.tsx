@@ -18,8 +18,9 @@ function Card({
 	level,
 	role,
 	news,
-	featured,
+	featured
 }: any) {
+
 	return (
 		<View
 			style={[
@@ -47,7 +48,6 @@ function Card({
 					tools={tools}
 					level={level}
 					role={role}
-					position={position}
 				/>
 			</View>
 		</View>

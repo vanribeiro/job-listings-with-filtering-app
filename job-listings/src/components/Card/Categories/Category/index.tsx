@@ -3,9 +3,9 @@ import styles from "./styles";
 import Words from "../../../Words";
 import { TouchableOpacity } from "react-native";
 
-function Category({ text, setSelectedCategory }: any) {
+function Category({ text, pushItems }: any) {
     return (
-        <TouchableOpacity onPress={() => setSelectedCategory(text)}>
+        <TouchableOpacity onPress={() => pushItems(text)}>
             <Words fontWeight={700} style={styles.category}>
                 {text}
             </Words>

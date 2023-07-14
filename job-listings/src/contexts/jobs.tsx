@@ -1,30 +1,19 @@
 import React, { createContext, useEffect, useState } from "react";
 import { listAllJobs } from "../services/requests/jobs";
-
-interface Job {
-	id: number;
-	company: string;
-	logo: string;
-	new: boolean;
-	featured: boolean;
-	position: string;
-	role: string;
-	level: string;
-	postedAt: string;
-	contract: string;
-	location: string;
-	languages: Array<string>;
-	tools: Array<string>;
-}
+import useCategories from "../hooks/useCategories";
+import IJob from "../interfaces/IJob";
 
 interface JobsContextType {
-	jobs: Array<Job>;
+	jobs: Array<IJob>;
+	filteredJobs: Array<any>;
+	setFilteredJobs: Function
 }
 
 const JobsContext = createContext({} as JobsContextType);
 
 function JobsProvider({ children }) {
-	const [jobs, setJobs] = useState<Array<Job>>([]);
+	const [jobs, setJobs] = useState<Array<IJob>>([]);
+	const [filteredJobs, setFilteredJobs] = useState<Array<any>>([]);
 
 	const fetchData = async () => {
 		const result = await listAllJobs();
@@ -36,7 +25,7 @@ function JobsProvider({ children }) {
 	
 	return (
 		<JobsContext.Provider 
-            value={{ jobs }}
+            value={{ jobs, filteredJobs, setFilteredJobs }}
         >
             {children}
         </JobsContext.Provider>
